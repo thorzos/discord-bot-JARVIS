@@ -1,4 +1,6 @@
 import 'dotenv/config';
+const fs = require('fs')
+
 
 export async function DiscordRequest(endpoint, options) {
   // append endpoint to root API URL
@@ -10,7 +12,7 @@ export async function DiscordRequest(endpoint, options) {
     headers: {
       Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
       'Content-Type': 'application/json; charset=UTF-8',
-      'User-Agent': 'DiscordBot (https://github.com/discord/discord-example-app, 1.0.0)',
+      'User-Agent': 'DiscordBot-Jarvis, 1.0.0',
     },
     ...options
   });
@@ -44,4 +46,12 @@ export function getRandomEmoji() {
 
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function getRandomJarvisMeme() {
+  const pathToMemes = './assets/jarvis-memes';
+  const files = fs.readdirSync(pathToMemes);
+  const randomMeme = Math.floor(files.length * Math.random()) + '.jpg';
+
+  return fs.createReadStream(`${pathToMemes}/${randomMeme}`);
 }

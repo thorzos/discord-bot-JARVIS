@@ -23,7 +23,7 @@ const TEST_COMMAND = {
   description: 'Basic command',
   type: 1,
   integration_types: [0, 1],
-  contexts: [0, 1, 2],
+  contexts: [0, 1],
 };
 
 // Command containing options
@@ -41,9 +41,18 @@ const CHALLENGE_COMMAND = {
   ],
   type: 1,
   integration_types: [0, 1],
-  contexts: [0, 2],
+  contexts: [0, 1],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND];
+const JARVISMEME_COMMAND = {
+  name: 'jarvismeme',
+  description: 'Sends a random Jarvis meme',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1],
+
+}
+
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, JARVISMEME_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
