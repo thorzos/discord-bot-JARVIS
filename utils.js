@@ -55,3 +55,21 @@ export function getRandomJarvisMeme() {
 
   return fs.createReadStream(`${pathToMemes}/${randomMeme}`);
 }
+
+export function getRandomPokemon() {
+  const pathToPokemon = './pokemon';
+  const files = fs.readdirSync(pathToPokemon);
+  const randomPokemon = files[Math.floor(files.length * Math.random())];
+
+  return fs.createReadStream(`${pathToPokemon}/${randomPokemon}`);
+}
+
+export function startSpawningPokemonInInterval(minTime, maxTime) {
+  const randomDelay = Math.floor(Math.random() * (maxTime - minTime + 1)) + minTime;
+
+  setTimeout(() => {
+      doSomething(); // TODO: spawn pokemon
+      startRandomTimer(minTime, maxTime);
+  }, randomDelay);
+}
+
